@@ -21,6 +21,7 @@ class CreateUserJobTable extends Migration
             $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->text('applies_date')->nullable();
             $table->string('resume')->nullable();
+            $table->string('notes')->nullable();
             $table->enum('status', ['pending','reject', 'shortlist', 'interview'])->default('pending')->nullable();
             // $table->timestamps();
         });

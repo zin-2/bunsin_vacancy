@@ -19,7 +19,7 @@ class PaymentController extends Controller
     {
         //
         if(Auth::user()->is_admin == 1){
-            $payment = UserPricing::with(['user','pricing'])->where('user_id' ,'!=',auth::user()->id)->get();
+            $payment = UserPricing::with(['user','pricing'])->get();
         }else{
             $payment = UserPricing::with(['user','pricing'])->where('user_id' ,'=',auth::user()->id)->get();
         }

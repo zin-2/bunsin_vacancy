@@ -157,8 +157,8 @@
                         @endif
 
                         <div class="form-group {{ $errors->has('name')? 'has-error':'' }}">
-                            <label for="name" class="control-label">Name :</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" placeholder="Name">
+                            <label for="name" class="control-label">Notes :</label>
+                            <input type="text" class="form-control" id="notes" name="name" value="{{old('name')}}" placeholder="Notes">
                           <font style="color:red"> {{ $errors->has('name') ?  $errors->first('name') : '' }} </font>
                        </div>
 
@@ -205,7 +205,9 @@ $("#applyJob").validate({
              form_data.append('file_name', file_data);
             var job_id = $('#job_id').val();
             var user_id = $('#user_id').val();
-            //console.log(file_data);
+            var notes = $('#notes').val();
+            form_data.append('notes', notes);
+          
             $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

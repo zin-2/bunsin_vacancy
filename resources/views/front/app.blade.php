@@ -488,7 +488,7 @@
                             </div>
                             <h3>3,412</h3>
                             <h4>Live Jobs</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            <p>We’re on a mission to build a better future where technology creates good jobs for everyone.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -499,7 +499,7 @@
                             </div>
                             <h3>12,043</h3>
                             <h4>Total Company</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            <p>Delivering the best result job search engine for our business partners.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -509,7 +509,7 @@
                             </div>
                             <h3>5,798,298</h3>
                             <h4>Total Candidate</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            <p>To connect human capital needs to human capital markets via digitized trustable, innovative and attractive job platform.</p>
                         </div>
                     </div>
                 </div>

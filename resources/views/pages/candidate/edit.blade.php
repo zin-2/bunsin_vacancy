@@ -83,8 +83,8 @@
             </div>
     </div>
     <div class="card-footer">
-        <a class="btn btn-default" href="{{ url()->previous() }}">Back</a>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-default" href="{{ url()->previous() }}"> Back</a>
+        <button type="submit" class="btn btn-primary float-right"><i class="fa fa-save"></i> Save</button>
     </div>
     <!-- /.card-body -->
     </form>
