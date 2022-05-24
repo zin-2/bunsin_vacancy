@@ -24,10 +24,7 @@
         <!-- Navbar -->
         @include('layouts.partials.header')
         <!-- /.navbar -->
-        @include('notify::messages')
 
-        <x:notify-messages />
-        @notifyJs
 
         <!-- Main Sidebar Container -->
         @include('layouts.partials.sidebar')
