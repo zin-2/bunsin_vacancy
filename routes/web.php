@@ -33,6 +33,7 @@ Route::resource('vacancy','VacancyController');
 Route::resource('contact','ContactController');
 Route::resource('pricing','PricingController');
 Route::resource('payment','PaymentController');
+Route::get('get-payment','PaymentController@getPayment')->name('view-payment');
 Route::post('get-job','VacancyController@jobSearch')->name('job-search');
 Route::resource('user','UserController');
 Route::resource('post','PostController');

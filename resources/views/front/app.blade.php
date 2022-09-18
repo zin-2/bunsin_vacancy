@@ -26,7 +26,7 @@
         <div class="banner-overlay"></div>
         <div class="container text-center">
             <marquee> <h1 class="title">The Easiest Way to Get Your New Job </h1> </marquee> 
-            <h3>We offer 12000 jobs vacation right now</h3>
+            <h3>We offer <strong style="color:#00a651;">{{ $vacancy }} </strong>jobs vacation right now</h3>
             <div class="banner-form">
                 <form action="{{ route('job-search') }}" method="POST" class="clearfix">
                 @csrf
@@ -147,6 +147,7 @@
                 </div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in" id="hot-jobs">
+                        @foreach ($job as $jobs)
                         <div class="job-ad-item">
                             <div class="item-info">
                                 <div class="item-image-box">
@@ -155,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="ad-info">
-                                    <span><a href="job-details.html" class=title>CTO</a> @ <a href="#">Volja Events & Entertainment</a></span>
+                                    <span><a href="job-details.html" class=title>{{ $jobs->title }}</a></span>
                                     <div class="ad-meta">
                                         <ul>
                                             <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
@@ -170,146 +171,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/1.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">Project Manager</a> @ <a href="#">Dominos Pizza</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/2.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">Graphics Designer</a> @ <a href="#">AOK Security</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/4.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">Human Resource Manager</a> @ <a href="#">Dropbox Inc</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div role="tabpanel" class="tab-pane fade in" id="recent-jobs">
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/2.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class=title>Graphics Designer</a> @ <a href="#">AOK Security</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/1.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class=title>Project Manager</a> @ <a href="#">Dominos Pizza</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/4.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">Human Resource Manager</a> @ <a href="#">Dropbox Inc</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        @foreach ($job as $jobs)
                         <div class="job-ad-item">
                             <div class="item-info">
                                 <div class="item-image-box">
@@ -318,7 +183,7 @@
                                     </div>
                                 </div>
                                 <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">CTO</a> @ <a href="#">Volja Events & Entertainment</a></span>
+                                    <span><a href="job-details.html" class=title>{{ $jobs->title }}</a></span>
                                     <div class="ad-meta">
                                         <ul>
                                             <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
@@ -333,54 +198,10 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                     <div role="tabpanel" class="tab-pane fade in active show" id="popular-jobs">
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/1.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">Project Manager</a> @ <a href="#">Dominos Pizza</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/2.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">Graphics Designer</a> @ <a href="#">AOK Security</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        @foreach ($job as $jobs)
                         <div class="job-ad-item">
                             <div class="item-info">
                                 <div class="item-image-box">
@@ -389,7 +210,7 @@
                                     </div>
                                 </div>
                                 <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">CTO</a> @ <a href="#">Volja Events & Entertainment</a></span>
+                                    <span><a href="job-details.html" class=title>{{ $jobs->title }}</a></span>
                                     <div class="ad-meta">
                                         <ul>
                                             <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
@@ -404,29 +225,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="job-ad-item">
-                            <div class="item-info">
-                                <div class="item-image-box">
-                                    <div class="item-image">
-                                        <a href="job-details.html"><img src="https://demo.themeregion.com/jobs/images/job/4.png" alt="Image" class="img-fluid"></a>
-                                    </div>
-                                </div>
-                                <div class="ad-info">
-                                    <span><a href="job-details.html" class="title">Human Resource Manager</a> @ <a href="#">Dropbox Inc</a></span>
-                                    <div class="ad-meta">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>San Francisco, CA, US </a></li>
-                                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                            <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>$25,000 - $35,000</a></li>
-                                            <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <a href="#" class="btn btn-primary">Apply Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -444,10 +243,7 @@
                             <img src="https://demo.themeregion.com/jobs/images/job/5.png" alt="Image" class="img-fluid">
                             <h3><a href="#">Business Process Management Training</a></h3>
                             <h4>Course Duration: 3 Month ( Sat, Mon, Fri)</h4>
-                            <div class="workshop-price">
-                                <h5>Course instructor: Kim Jon ley</h5>
-                                <h5>Course Amount: $200</h5>
-                            </div>
+                            
                             <div class="ad-meta">
                                 <div class="meta-content">
                                     <span class="dated"><a href="#">7 Jan 10:10 pm </a></span>
@@ -463,10 +259,7 @@
                             <img src="https://demo.themeregion.com/jobs/images/job/6.png" alt="Image" class="img-fluid">
                             <h3><a href="#">Employee Motivation and Engagement</a></h3>
                             <h4>Course Duration: 3 Month ( Sat, Mon, Fri)</h4>
-                            <div class="workshop-price">
-                                <h5>Course instructor: Kim Jon ley</h5>
-                                <h5>Course Amount: $200</h5>
-                            </div>
+                          
                             <div class="ad-meta">
                                 <div class="meta-content">
                                     <span class="dated"><a href="#">7 Jan 10:10 pm </a></span>

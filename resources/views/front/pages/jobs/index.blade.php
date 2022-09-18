@@ -183,8 +183,8 @@
                             <div class="job-ad-item">
                                 <div class="item-info">
                                     <div class="item-image-box">
-                                        <div class="item-image">
-                                            <a href="job-details.html"><img src="{{ asset("images/".$jobs->company->company_logo)}}" alt="Image" class="img-fluid rounded"></a>
+                                        <div class="item-image-update">
+                                            <a href="{{ url('vacancy/'.$jobs->id) }}"><img src="{{ asset("images/".$jobs->company->company_logo)}}" alt="Image" class="img-fluid rounded"></a>
                                         </div>
                                     </div>
                                     <div class="ad-info">

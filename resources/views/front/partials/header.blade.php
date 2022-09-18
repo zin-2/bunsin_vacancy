@@ -14,7 +14,7 @@
                     <a href="{{ route('vacancy.index') }}"><i class="fa fa-briefcase"></i> Job list</a>
                 </li>
                 <li class="{{ (request()->segment(1) == 'pricing') ? 'active' : '' }}">  
-                    <a href="{{ route('payment.index') }}"><i class="fa fa-dollar"></i> Pricing</a>
+                    <a href="{{ route('view-payment') }}"><i class="fa fa-dollar"></i> Pricing</a>
                 </li>
                 <li class="{{ (request()->segment(1) == 'post-page') ? 'active' : '' }}"> 
                     <a href="{{ route('post_page') }}"><i class="fa fa-file-o"></i> Blogs</a>

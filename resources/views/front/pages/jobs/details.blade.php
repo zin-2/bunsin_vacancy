@@ -45,7 +45,7 @@
                                 <ul>
                                     <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>{{ $vacancy->province->name }}</a></li>
                                     <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                    <li><i class="fa fa-money" aria-hidden="true"></i>{{ $vacancy->start_from. ' - '.$vacancy->start_to.' $ ' }}</li>
+                                    <li><i class="fa fa-money" aria-hidden="true"></i>{{ $vacancy->salary. ' - '.$vacancy->salary_upto.' $ ' }}</li>
                                     <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>{{ $vacancy->category->name }}</a></li>
                                     <li><i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline : {{ $vacancy->closing_date }}</li>
                                 </ul>

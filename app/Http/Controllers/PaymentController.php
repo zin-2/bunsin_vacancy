@@ -25,6 +25,12 @@ class PaymentController extends Controller
         }
         return view('pages.payment.index',compact(['payment']));
     }
+    public function getPayment()
+    {
+        # code...
+        $pricing = Pricing::all();
+        return view('front.pages.payment.index',compact(['pricing']));
+    }
 
     /**
      * Show the form for creating a new resource.

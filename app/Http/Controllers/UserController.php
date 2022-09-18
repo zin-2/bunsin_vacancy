@@ -123,9 +123,7 @@ class UserController extends Controller
     {
         // dd($id);
         $job = UserJob::with(['job','user'])->where('id',$id)->where('user_id',$user_id)->where('job_id',$job_id)->first();
-
         $Company = Company::where('id',$job->job->company_id)->first();
-
         return view('pages.candidate.detail',compact(['job','Company']));
     }
     /**

@@ -500,7 +500,7 @@ textarea {
 }
 
 .ad-meta {
-    background-color: #f6f6f6;
+    background-color: #00a651;
     border-top: 1px solid #eee;
     min-height: 35px;
     position: absolute;
@@ -530,7 +530,7 @@ textarea {
 .ad-meta .meta-content span,
 .ad-meta .meta-content a {
     font-weight: 400;
-    color: #9fa4a4
+    color: #fff;
 }
 
 .ad-meta .meta-content a:hover {
@@ -893,7 +893,8 @@ a.verified i {
 }
 
 .accordion .card-header {
-    background-color: #ededed;
+    /* background-color: #ededed; */
+    background-color:#00a651;
     border: none;
     padding: 10px 15px;
     border: 0
@@ -907,7 +908,7 @@ a.verified i {
     width: 100%;
     text-align: left;
     font-size: 18px;
-    color: #000;
+    color: #ffff;
     font-weight: 500;
     cursor: pointer;
     padding-right: 20px
@@ -1966,19 +1967,19 @@ input:-moz-placeholder {
 }
 
 .footer-bottom {
-    background-color: #f7f7f7;
-    color: #6e6e6e;
+    background-color: #00a651;
+    color: #fff;
     font-size: 14px;
     padding: 19px 0 12px;
     font-weight: 300
 }
 
 .footer-bottom a {
-    color: #6e6e6e
+    color: #fff
 }
 
 .footer-bottom a:hover {
-    color: #00a651;
+    color: #000;
     text-decoration: underline
 }
 
@@ -2134,7 +2135,14 @@ input:-moz-placeholder {
 
 .job-ad-item .ad-meta li {
     float: left;
-    margin-right: 20px
+    margin-right: 20px;
+    margin-top: -14px;
+}
+
+.job-ad-item .ad-meta li {
+    float: left;
+    margin-right: 20px;
+    margin-top: -14px;
 }
 
 .job-ad-item .item-image-box,
@@ -2191,8 +2199,18 @@ input:-moz-placeholder {
 }
 
 .job-ad-item .item-image {
-    width: 95px;
-    height: 85px;
+    width: 75px;
+    height: 62px;
+    border: 1px solid #f3f3f3;
+    overflow: hidden
+}
+
+/*
+        adding new style
+*/
+.job-ad-item .item-image-update {
+    width: 63px;
+    height: 62px;
     border: 1px solid #f3f3f3;
     overflow: hidden
 }
@@ -2208,7 +2226,7 @@ input:-moz-placeholder {
 
 .job-ad-item .btn.btn-primary {
     padding: 5px 30px 6px;
-    margin-top: 25px;
+    margin-top: 15px;
     font-size: 14px;
     margin-right: 25px
 }
@@ -2330,7 +2348,7 @@ input:-moz-placeholder {
 .job-details .ad-info span,
 .job-details .ad-info span a {
     display: inline-block;
-    font-size: 30px
+    font-size: 18px
 }
 
 .social-media {
