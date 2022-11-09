@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Theme Region">
     <meta name="description" content="">
-    <title>Jobs | Job Portal / Job Board </title>
+    <title>KH-WORKS</title>
 
     @include('front.partials.style')
 
@@ -51,84 +51,84 @@
                 <ul class="category-list">
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/1.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/1.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Accounting/Finance</span>
                             <span class="category-quantity">(1298)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/2.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/2.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Education/Training</span>
                             <span class="category-quantity">(76212)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/3.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/3.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Engineer/Architects</span>
                             <span class="category-quantity">(212)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/4.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/4.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Garments/Textile</span>
                             <span class="category-quantity">(972)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/5.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/5.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">HR/Org. Development</span>
                             <span class="category-quantity">(1298)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/6.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/6.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Design/Creative</span>
                             <span class="category-quantity">(76212)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/7.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/7.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Research/Consultancy</span>
                             <span class="category-quantity">(1298)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/8.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/8.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Medical/Pharma</span>
                             <span class="category-quantity">(76212)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/9.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/9.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Music & Arts</span>
                             <span class="category-quantity">(212)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/10.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/10.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Marketing/Sales</span>
                             <span class="category-quantity">(1298)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/11.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/11.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Production/Operation</span>
                             <span class="category-quantity">(124)</span>
                         </a>
                     </li>
                     <li class="category-item">
                         <a href="job-list.html">
-                            <div class="category-icon"><img src="https://demo.themeregion.com/jobs/images/icon/12.png" alt="images" class="img-fluid"></div>
+                            <div class="category-icon"><img src="{{ asset('images/homepage/12.png') }}" alt="images" class="img-fluid"></div>
                             <span class="category-title">Miscellaneous</span>
                             <span class="category-quantity">(972)</span>
                         </a>

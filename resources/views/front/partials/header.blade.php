@@ -3,7 +3,7 @@
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"><i class="fa fa-align-justify"></i></span>
          </button>
-         <a class="navbar-brand" href="{{ route('home') }}"><img class="img-fluid" src="https://demo.themeregion.com/jobs/images/logo.png" alt="Logo"></a>
+         <a class="navbar-brand" href="{{ route('home') }}"><img class="img-fluid" src="{{ asset('images/logo.png') }}" alt="Logo"></a>
          <div class="collapse navbar-collapse" id="navbarNav">
              <ul class="nav navbar-nav">
 

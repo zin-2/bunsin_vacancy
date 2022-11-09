@@ -48,5 +48,6 @@ Route::get('applicant-edit/{id}', 'UserController@employerApplicantEdit')->name(
 Route::patch('applicant-update/{id}', 'UserController@employerApplicantUpdate')->name('employer_applicant_update');
 Route::post('applicant-create-post', 'UserController@employerApplicantPost')->name('employer_applicant_post');
 Route::get('applicant-create-detail/{id}/{user_id}/{job_id}', 'UserController@employerApplicantDetail')->name('employer_applicant_detail');
+//Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-
+Route::get('lang/{lang}','LanguageController@switchLang')->name('lang.switch');////

@@ -1,9 +1,13 @@
- <script src="https://demo.themeregion.com/jobs/js/jquery.min.js" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
-    <script src="https://demo.themeregion.com/jobs/js/popper.min.js" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
-    <script src="https://demo.themeregion.com/jobs/js/bootstrap.min.js" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
-    <script src="https://demo.themeregion.com/jobs/js/price-range.js" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
-    <script src="https://demo.themeregion.com/jobs/js/main.js" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
-    <script src="https://demo.themeregion.com/jobs/js/switcher.js" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
+ 
+ 
+ 
+ 
+ <script src="{{ asset('js/jquery.min.js') }}" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
+    <script src="{{ asset('js/popper.min.js') }}" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
+    <script src="{{ asset('js/price-range.js') }}" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
+    <script src="{{ asset('js/main.js') }}" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
+    <script src="{{ asset('js/switcher.js') }}" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
     <script src="{{ asset('js/toastr.min.js') }}" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
     <script src="{{ asset('js/jquery.validate.js') }}" type="e2b75470ca6b6e3072a3ad75-text/javascript"></script>
     <script type="e2b75470ca6b6e3072a3ad75-text/javascript">

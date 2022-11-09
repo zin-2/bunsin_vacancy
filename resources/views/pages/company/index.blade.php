@@ -95,7 +95,7 @@
         <script type="text/javascript">
             $("#tbl_company").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["csv", "excel"]
               }).buttons().container().appendTo('#tbl_company_wrapper .col-md-6:eq(0)');
         </script>
     @endsection

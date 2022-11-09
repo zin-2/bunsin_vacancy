@@ -74,6 +74,7 @@ class UserController extends Controller
         $job->resume =  $filename;
         $job->applies_date = Carbon::now();
         $job->status = $request->status;
+        $job->notes =  $request->note;
         $job->save();
         $isVacancy = $job->id;
         $userVacancy = UserJob::find($isVacancy);
@@ -87,7 +88,7 @@ class UserController extends Controller
         $user = User::where([['id','!=',Auth::user()->id],['is_active','=',"0"]])->orderBy('name', 'asc')->get();
         $status = ["pending","reject","shortlist","interview"];
         $job = UserJob::with(['job','user'])->where('id',$id)->first();
-        // dd($job->job->title);
+        //dd($user);
         return view('pages.candidate.edit',compact(['all_job','user','status','job']));
     }
     public function employerApplicantUpdate($id, Request $request)

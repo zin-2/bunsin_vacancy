@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Theme Region">
     <meta name="description" content="">
-    <title>Jobs | Job Portal / Job Board</title>
+    <title>KH-WORKS</title>
 
     @include('front.partials.style')
     <!--[if lt IE 9]>

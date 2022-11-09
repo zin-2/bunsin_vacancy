@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
         <img src="https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">BunsinLTE 3</span>
+        <span class="brand-text font-weight-light">KH-WORKS </span>
     </a>
 
     <!-- Sidebar -->
@@ -25,7 +25,7 @@
                     <a href="{{ url('admin/dashboard') }}" class="nav-link ">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
-                            Dashboard
+                            {{__('dashboard.dashboard')}}
                         </p>
                     </a>
                 </li>   
@@ -34,7 +34,7 @@
                         <a href="{{route('company.index')}}" class="nav-link ">
                             <i class="nav-icon fas fa-briefcase"></i>
                             <p>
-                                Company
+                                {{__('dashboard.company')}}
                             </p>
                         </a>
                     </li>
