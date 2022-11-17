@@ -40,7 +40,7 @@
         @endif
 
 
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="tbl_category" class="table table-bordered table-striped">
 
             <thead>
                 <tr>
@@ -80,4 +80,12 @@
         <!-- /.card-footer-->
     </div>
     <!-- /.card -->
+    @endsection
+    @section('scripts')
+        <script type="text/javascript">
+            $("#tbl_category").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+              }).buttons().container().appendTo('#tbl_category_wrapper .col-md-6:eq(0)');
+        </script>
     @endsection

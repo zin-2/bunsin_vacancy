@@ -40,13 +40,18 @@
                     <th width="15%">Date Applies : </th>
                     <td>{{ date('d-m-Y', strtotime($job->applies_date))  }}</td>
                 </tr>
-                 <tr>
+                <tr>
+                    <th>Notes</th>
+                    <td>
+                        {{ $job->notes }}
+                    </td>
+                </tr> 
+                <tr>
                     <th>Status</th>
                     <td>
                         <span class="badge badge-success">{{ $job->status }}</span>
                     </td>
                 </tr> 
-
                  <tr>
                     <th>Resume</th>
                     <td>

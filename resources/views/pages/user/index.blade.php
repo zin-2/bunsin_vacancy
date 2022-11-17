@@ -9,7 +9,7 @@
         <div class="card-tools">
             <ul class="nav nav-pills ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('category.create') }}"><i class="fas fa-plus-circle"></i> Create New Users</a>
+                    <a class="nav-link active" href="{{ route('user.create') }}"><i class="fas fa-plus-circle"></i> Create New Users</a>
                 </li>
 
             </ul>
@@ -40,6 +40,7 @@
                     <th>ID</th>
                     <th>User Name</th>
                     <th>Email </th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -49,6 +50,9 @@
                     <td>{{$key+1}}</td>
                     <td><a href="{{ route('user.show',[$users->id]) }}"> {{$users->name}}</a></td>
                     <td>{{$users->email}}</td>
+                    <td>
+                        <span class="badge badge-success">{{ $users->is_active == 0 ? "Active" : "Inactive" }}</span>
+                    </td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-warning">Action</button>

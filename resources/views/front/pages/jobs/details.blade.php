@@ -29,28 +29,46 @@
                     <li><a href="job-list.html">Engineer/Architects</a></li>
                     <li>UI & UX Designer</li>
                 </ol>
-                <h2 class="title">Creative & Design</h2>
+                <h2  style="color:#003366" class="title">{{ $vacancy->title }}</h2>
             </div>
             <div class="job-details">
                 <div class="section job-ad-item">
                     <div class="item-info">
                         <div class="item-image-box">
                             <div class="item-image">
-                                <img src="{{ asset("images/".$vacancy->company->company_logo)}}" alt="Image" class="img-fluid">
+                                <img src="https://demo.htmlcodex.com/2246/job-portal-website-template/img/com-logo-1.jpg" alt="Image" class="img-fluid">
                             </div>
                         </div>
                         <div class="ad-info">
                             <span><a href="#" class="title">{{ $vacancy->title }}</a></span>
+                           
+                            
+                           
                             <div class="ad-meta">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>{{ $vacancy->province->name }}</a></li>
-                                    <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                    <li><i class="fa fa-money" aria-hidden="true"></i>{{ $vacancy->start_from. ' - '.$vacancy->start_to.' $ ' }}</li>
-                                    <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>{{ $vacancy->category->name }}</a></li>
-                                    <li><i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline : {{ $vacancy->closing_date }}</li>
+                                    <li><a href="#">{{ $vacancy->province->name }}</a></li>
+                                    <li><a href="#">Full Time</a></li>
+                                    <li>{{ $vacancy->salary. ' - '.$vacancy->salary_upto.' $ ' }}</li>
+                                    <li>{{ $vacancy->category->name }}</a></li>
+                                    <li>Application Deadline : {{ $vacancy->closing_date }}</li>
+                                   
+                                    
                                 </ul>
+                                
                             </div>
                         </div>
+                        
+                            @if(Auth::check())
+                            <div class="button">
+                                <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary"><i class="fa fa-bolt" aria-hidden="true"></i> Apply Nows</a>
+                                <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i> Save</a>
+                            </div>
+                            @else
+                            <div class="button">
+                                <a href="{{ route('login') }}" class="btn btn-primary">Apply Now</a>
+                                <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary">Save</a>
+                            </div>
+                            @endif
                     </div>
                 </div>
                 <div class="job-details-info">
@@ -58,21 +76,7 @@
                         <div class="col-sm-8">
 
                             <div class="section job-description">
-                                <div class="social-media">
-                                    @if(Auth::check())
-                                    <div class="button">
-                                        <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Apply For This Job</a>
-                                        <a href="#" class="btn btn-primary bookmark"><i class="fa fa-bookmark-o" aria-hidden="true"></i>Bookmark</a>
-                                    </div>
-                                    @else
-                                    <div class="button">
-                                        <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>Apply For This Job</a>
-                                        <a href="{{ route('login') }}" class="btn btn-primary bookmark"><i class="fa fa-bookmark-o" aria-hidden="true"></i>Bookmark</a>
-                                    </div>
-                                    @endif
-                                  
-
-                                </div>
+                               
                                 <div class="responsibilities">
                                     <h1>Key Responsibilities:</h1>
                                     <p>{!! $vacancy->description !!}</p>
@@ -157,8 +161,8 @@
                         @endif
 
                         <div class="form-group {{ $errors->has('name')? 'has-error':'' }}">
-                            <label for="name" class="control-label">Name :</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" placeholder="Name">
+                            <label for="name" class="control-label">Notes :</label>
+                            <input type="text" class="form-control" id="notes" name="name" value="{{old('name')}}" placeholder="Notes">
                           <font style="color:red"> {{ $errors->has('name') ?  $errors->first('name') : '' }} </font>
                        </div>
 
@@ -205,7 +209,9 @@ $("#applyJob").validate({
              form_data.append('file_name', file_data);
             var job_id = $('#job_id').val();
             var user_id = $('#user_id').val();
-            //console.log(file_data);
+            var notes = $('#notes').val();
+            form_data.append('notes', notes);
+          
             $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

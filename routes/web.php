@@ -33,6 +33,7 @@ Route::resource('vacancy','VacancyController');
 Route::resource('contact','ContactController');
 Route::resource('pricing','PricingController');
 Route::resource('payment','PaymentController');
+Route::get('get-payment','PaymentController@getPayment')->name('view-payment');
 Route::post('get-job','VacancyController@jobSearch')->name('job-search');
 Route::resource('user','UserController');
 Route::resource('post','PostController');
@@ -47,5 +48,6 @@ Route::get('applicant-edit/{id}', 'UserController@employerApplicantEdit')->name(
 Route::patch('applicant-update/{id}', 'UserController@employerApplicantUpdate')->name('employer_applicant_update');
 Route::post('applicant-create-post', 'UserController@employerApplicantPost')->name('employer_applicant_post');
 Route::get('applicant-create-detail/{id}/{user_id}/{job_id}', 'UserController@employerApplicantDetail')->name('employer_applicant_detail');
+//Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-
+Route::get('lang/{lang}','LanguageController@switchLang')->name('lang.switch');////

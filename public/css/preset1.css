@@ -83,7 +83,7 @@ a, .nav li a:hover,
 .resume-content .icons, .profile-info address a:hover,
 .job-profile .user-menu li.active a, .job-profile .user-menu li a:hover,
 .job-profile .user h2 a, .job-profile .favorites-user a, .job-profile .favorites-user small:hover  {
-	color:#00a651;
+	color:#003366;
 }
 
 
@@ -104,7 +104,7 @@ a.verified i,
 .download-button a.btn:hover, .post-resume .upload-image:hover,
 .post-resume form .buttons a.btn:hover,
 .banner-form button.btn.btn-primary  {
-	background-color:#00a651;
+	background-color:#003366;
 }
 
 
@@ -115,12 +115,12 @@ a.verified i,
 .col-to-action .form-control,
  .buttons a.btn, .post-resume form .buttons a.btn:hover,
  .navbar-toggler, .banner-form button.btn.btn-primary {
-	border-color: #00a651;
+	border-color: #003366;
 }
 
 
 .featured-image a i:after {
-	border-right: 40px solid #00a651;
+	border-right: 40px solid #003366;
 }
  
 #something-sell .btn.btn-primary, 
@@ -135,19 +135,19 @@ a.verified i,
 .pagination>.active>a:hover, 
 #something-sell a.btn:hover,
  .buttons a.btn:hover  {
-	border: 1px solid #00a651;
+	border: 1px solid #003366;
 }
 
 .postdetails input[type="radio"] + label:before,
 .premium-options input[type="radio"] + label:before,
 .adpost-details input[type="radio"] + label:before {
-	border: 2px solid #00a651;
+	border: 2px solid #003366;
 }
 
 .postdetails input[type="radio"]:checked + label:after,
 .premium-options input[type="radio"]:checked + label:after,
 .adpost-details input[type="radio"]:checked + label:after {
-	border: 5px solid #00a651;
+	border: 5px solid #003366;
 }
 
 .rating input[type="radio"] + label:before,

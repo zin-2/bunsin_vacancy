@@ -22,11 +22,6 @@
     <div class="card-body">
         <form name="add-category" id="add-blog-post-form" method="post" action="{{ route('employer_applicant_post') }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Enter Name">
-                <font style="color:red"> {{ $errors->has('name') ?  $errors->first('name') : '' }} </font>
-            </div>
              <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -34,7 +29,7 @@
                         <select id="vacancy" name="vacancy" class="form-control">
                             <option>-- Please Select Vacancy --</option>
                             @foreach ($job as $jobs)
-                            <option value="{{$jobs->id}}">{{$jobs->title}}</option>
+                                <option value="{{$jobs->id}}">{{$jobs->title}}</option>
                             @endforeach
                         </select>
                         <font style="color:red"> {{ $errors->has('vacancy') ?  $errors->first('vacancy') : '' }} </font>
@@ -70,7 +65,15 @@
                     </div>
                 </div>
             </div>
-             <div class="row">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Noted <span class="text-danger">*</span> </label>
+                        <textarea name="note" class="form-control" id="" cols="30" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label>Candidate Resume <span class="text-danger">*</span> </label>
@@ -81,8 +84,8 @@
             </div>
     </div>
     <div class="card-footer">
-        <a class="btn btn-default" href="{{ url()->previous() }}">Back</a>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-default" href="{{ url()->previous() }}"> Back</a>
+        <button type="submit" class="btn btn-primary float-right"><i class="fa fa-save"></i> Save</button>
     </div>
     <!-- /.card-body -->
     </form>

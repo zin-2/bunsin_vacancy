@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
         <img src="https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">BunsinLTE 3</span>
+        <span class="brand-text font-weight-light">KH-WORKS </span>
     </a>
 
     <!-- Sidebar -->
@@ -25,18 +25,16 @@
                     <a href="{{ url('admin/dashboard') }}" class="nav-link ">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
-                            Dashboard
+                            {{__('dashboard.dashboard')}}
                         </p>
                     </a>
-                </li>
- 
-                  
+                </li>   
                 @if(Auth::user()->is_admin == 1 || Auth::user()->is_admin == 0 )
                     <li class="nav-item">
                         <a href="{{route('company.index')}}" class="nav-link ">
                             <i class="nav-icon fas fa-briefcase"></i>
                             <p>
-                                Company
+                                {{__('dashboard.company')}}
                             </p>
                         </a>
                     </li>
@@ -46,13 +44,13 @@
                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-list-alt"></i>
-                        <p>Candiate<i class="right fas fa-angle-left"></i></p>
+                        <p>{{ __('dashboard.manage_candidate') }}<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('employer_applicant')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List All Canidate</p>
+                                <p> Canidates</p>
                             </a>
                         </li>   
                     </ul>
@@ -62,7 +60,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
-                        <p>Job Posting<i class="right fas fa-angle-left"></i></p>
+                        <p>{{ __('dashboard.manage_jobs') }}<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -87,15 +85,12 @@
                         </li>   
                     </ul>
                 </li>
-                <li class="nav-header">SETTING</li>
+                <li class="nav-header"> Setting</li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
-                        <p>
-                           Setting
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                        <p>Account Setting<i class="right fas fa-angle-left"></i></p>
                     </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -117,7 +112,7 @@
                  <li class="nav-item">
                     <a href="{{ route('payment.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-dollar-sign"></i>
-                        <p>Payments</p>
+                        <p>Service Package</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -135,6 +130,7 @@
                         </p>
                     </a>
                 </li>
+                
          
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="nav-link">

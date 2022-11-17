@@ -65,7 +65,7 @@ class JobController extends Controller
         $filenameWithExt = $request->file('file_name');
         $filename = $filenameWithExt->getClientOriginalName();
         $job = job::find($job_id);
-        $job->user()->attach($user_id,array('status'=>'pending','resume'=> $filename ,'applies_date'=>Carbon::now()));
+        $job->user()->attach($user_id,array('notes'=>$request->notes,'status'=>'pending','resume'=> $filename ,'applies_date'=>Carbon::now()));
         $job->save();
         $isVacancy = $job->id;
         $userVacancy = UserJob::find($isVacancy);

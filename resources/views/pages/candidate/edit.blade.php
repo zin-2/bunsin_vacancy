@@ -21,13 +21,8 @@
     </div>
     <div class="card-body">
         <form name="add-category" id="add-blog-post-form" method="post" action="{{ route('employer_applicant_update',[$job->id]) }}" enctype="multipart/form-data">
-             @csrf
+            @csrf
             @method('patch')
-            <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Enter Name">
-                <font style="color:red"> {{ $errors->has('name') ?  $errors->first('name') : '' }} </font>
-            </div>
              <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -71,6 +66,14 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Noted <span class="text-danger">*</span> </label>
+                        <textarea name="note" class="form-control" id="" cols="30" rows="5">{{ $job->notes }}</textarea>
+                    </div>
+                </div>
+            </div>
              <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -83,8 +86,8 @@
             </div>
     </div>
     <div class="card-footer">
-        <a class="btn btn-default" href="{{ url()->previous() }}">Back</a>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-default" href="{{ url()->previous() }}"> Back</a>
+        <button type="submit" class="btn btn-primary float-right"><i class="fa fa-save"></i> Save</button>
     </div>
     <!-- /.card-body -->
     </form>

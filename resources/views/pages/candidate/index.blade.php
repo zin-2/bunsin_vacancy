@@ -99,7 +99,7 @@
         <script type="text/javascript">
             $("#tbl_candidate").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": ["csv", "excel", "pdf"],
               }).buttons().container().appendTo('#tbl_candidate_wrapper .col-md-6:eq(0)');
         </script>
     @endsection

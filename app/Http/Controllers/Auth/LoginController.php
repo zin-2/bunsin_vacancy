@@ -47,7 +47,7 @@ class LoginController extends Controller
             'password' => 'required',
         ];
         $errorMessage = [
-            'required' => 'Email-Address And Password Are Wrong.'
+            'required' => 'Your credential is not match with our record'
         ];
         $this->validate($request, $rules, $errorMessage);
    
@@ -61,7 +61,7 @@ class LoginController extends Controller
                 return redirect()->route('home');
             }
         }else{
-            return redirect()->route('login')->with('message','Email-Address And Password Are Wrong.');
+            return redirect()->route('login')->with('message','Email & Password ');
         }
           
     }

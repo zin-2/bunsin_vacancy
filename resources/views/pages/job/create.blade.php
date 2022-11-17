@@ -247,7 +247,7 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-
+   
 //Date picker
 $('#closing_date').datepicker({
   //  format: 'yyyy-mm-dd'

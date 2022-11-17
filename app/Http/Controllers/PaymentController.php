@@ -19,11 +19,17 @@ class PaymentController extends Controller
     {
         //
         if(Auth::user()->is_admin == 1){
-            $payment = UserPricing::with(['user','pricing'])->where('user_id' ,'!=',auth::user()->id)->get();
+            $payment = UserPricing::with(['user','pricing'])->get();
         }else{
             $payment = UserPricing::with(['user','pricing'])->where('user_id' ,'=',auth::user()->id)->get();
         }
         return view('pages.payment.index',compact(['payment']));
+    }
+    public function getPayment()
+    {
+        # code...
+        $pricing = Pricing::all();
+        return view('front.pages.payment.index',compact(['pricing']));
     }
 
     /**
