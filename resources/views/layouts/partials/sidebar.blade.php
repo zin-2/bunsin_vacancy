@@ -44,7 +44,7 @@
                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-list-alt"></i>
-                        <p>Manage Candiates<i class="right fas fa-angle-left"></i></p>
+                        <p>{{ __('dashboard.manage_candidate') }}<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -60,7 +60,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
-                        <p>Manage Jobs<i class="right fas fa-angle-left"></i></p>
+                        <p>{{ __('dashboard.manage_jobs') }}<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">

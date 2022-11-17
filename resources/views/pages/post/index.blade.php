@@ -10,7 +10,7 @@
         <div class="card-tools">
             <ul class="nav nav-pills ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('company.create') }}"><i class="fas fa-plus-circle"></i>
+                    <a class="nav-link active" href="{{ route('post.create') }}"><i class="fas fa-plus-circle"></i>
                         Add New Post</a>
                 </li>
 

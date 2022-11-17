@@ -57,6 +57,7 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
+       // dd('hello');
         $request->validate([
             'name' => 'required',
             'email' => 'required',

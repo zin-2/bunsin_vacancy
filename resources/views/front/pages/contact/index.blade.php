@@ -7,7 +7,7 @@
     <meta name="author" content="Theme Region">
     <meta name="description" content="">
     <title>KH-WORKS</title>
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/slideshow/favicon.ico') }}">
     @include('front.partials.style')
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

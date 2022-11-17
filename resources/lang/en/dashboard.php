@@ -2,5 +2,7 @@
 
 return [
     'dashboard' => 'Dashboard',
-    'company' => 'Company'
+    'company' => 'Company',
+    'manage_candidate' => 'Manage Candidate',
+    'manage_jobs' => 'Manage Jobs'
 ];
