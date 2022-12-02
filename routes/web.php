@@ -44,10 +44,12 @@ Route::get('check-email/{id}', 'UserController@checkPassword')->name('check_emai
 Route::post('change-password', 'UserController@changePasswordPost');
 Route::get('applicant', 'UserController@employerApplicant')->name('employer_applicant');
 Route::get('applicant-create', 'UserController@employerApplicantCreate')->name('employer_applicant_create');
+Route::get('applicant-save', 'UserController@employerApplicantSave')->name('employer_applicant_save');
 Route::get('applicant-edit/{id}', 'UserController@employerApplicantEdit')->name('employer_applicant_edit');
 Route::patch('applicant-update/{id}', 'UserController@employerApplicantUpdate')->name('employer_applicant_update');
 Route::post('applicant-create-post', 'UserController@employerApplicantPost')->name('employer_applicant_post');
 Route::get('applicant-create-detail/{id}/{user_id}/{job_id}', 'UserController@employerApplicantDetail')->name('employer_applicant_detail');
 //Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-Route::get('lang/{lang}','LanguageController@switchLang')->name('lang.switch');////
+Route::get('lang/{lang}','LanguageController@switchLang')->name('lang.switch');
+////

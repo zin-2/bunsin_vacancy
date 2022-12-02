@@ -44,6 +44,11 @@ class UserController extends Controller
         }
         return view('pages.candidate.index',compact(['applicant']));
     }
+
+    public function employerApplicantSave(){
+
+        return response()->json('hello');
+    }
     public function employerApplicantCreate()
     {
         # code...

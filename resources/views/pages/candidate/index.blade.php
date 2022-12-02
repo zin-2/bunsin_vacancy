@@ -40,9 +40,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Vacancy</th>
-                    <th>Date Apply</th>
+                    <th>User Applied</th>
+                    <th>Job Title</th>
+                    <th>Applied Date</th>
                     <th>Status</th>
                     <th>Resume</th>
                     <th>Action</th>
@@ -54,7 +54,8 @@
                     <td>{{$key+1}}</td>
                     <td><a  href="{{ route('employer_applicant_detail',[$applicants->id,$applicants->user->id,$applicants->job->id]) }}">{{$applicants->user->name}}</a> </td>
                     <td>{{$applicants->job->title}}</td>
-                    <td>{{ date('d-m-Y', strtotime($applicants->applies_date))  }}</td>
+                    {{--  <td>{{ date('Y-m-d', strtotime($applicants->applies_date))  }}</td>  --}}
+                    <td>{{ \Carbon\Carbon::parse($applicants->applies_date)->isoFormat('MMMM D , YYYY')}}</td>
                     <td>
                         @if($applicants->status == "pending")
                                 <span class="badge badge-warning">{{ $applicants->status }}</span>

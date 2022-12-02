@@ -21,6 +21,17 @@
             box-shadow: none;
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
+        .btn.btn-primary {
+            background: #003366 !important;
+            border: 1px solid #003366 !important;
+            color: #fff !important;
+        }
+        a {
+            -webkit-transition: .3s all ease;
+            -o-transition: .3s all ease;
+            transition: .3s all ease;
+            color: #003366;
+        }
     </style>
 </head>
 

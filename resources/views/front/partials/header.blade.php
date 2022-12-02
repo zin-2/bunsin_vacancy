@@ -46,6 +46,7 @@
          </ul>
          <a href="{{ route('login') }}" class="btn"> Post Your Job</a>
          @endif
+         
      </div>
      </div>
  </nav>
