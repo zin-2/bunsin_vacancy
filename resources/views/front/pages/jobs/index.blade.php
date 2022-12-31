@@ -17,53 +17,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-        .job-item {
-            border: 1px solid transparent;
-            border-radius: 2px;
-            box-shadow: 0 0 45px rgb(0 0 0 / 8%);
-            transition: .5s;
-        }
-
-        .g-4,
-        .gy-4 {
-            --bs-gutter-y: 1.5rem;
-        }
-
-        .mb-3 {
-            margin-bottom: 1rem !important;
-        }
-
-        .text-start {
-            text-align: left !important;
-        }
-
-        .ps-4 {
-            padding-left: 1.5rem !important;
-        }
-
-        small,
-        .small {
-            font-size: .875em;
-        }
-
-        .me-3 {
-            margin-right: 1rem !important;
-        }
-
-        .me-2 {
-            margin-right: 0.5rem !important;
-        }
-
-        .text-primary {
-            color: #003366 !important;
-        }
-
-        .btn-apply {
-            border-radius: 0px;
-        }
-
-        .p-4 {
-            padding: 1rem !important;
+       
+        .card-body+.card-body {
+            border-top: 1px solid #e8ebf3;
         }
     </style>
 
@@ -84,7 +40,7 @@
                 </ol>
                 <h2 class="title">Software Engineer</h2>
             </div>
-            
+
             <div class="banner-form banner-form-full job-list-form">
 
                 <form action="{{ route('job-search') }}" method="POST" class="clearfix">
@@ -113,7 +69,63 @@
             </div>
             <div class="category-info">
                 <div class="row">
-                    <div class="container">
+                    {{--  @endforeach  --}}
+                    @foreach ( $job as $jobs)
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="item-card7-desc">
+                                        <div class="item-card7-text"> <a href="{{ url('vacancy/'.$jobs->id) }}" class="text-dark">
+                                                <h6 class="font-weight-semibold"><strong>{{ $jobs->title }}</strong></h6>
+                                            </a>
+                                        </div>
+                                        <h6>{{ $jobs->category->name }}</h6>
+                                        <h6>{{ $jobs->province->name }} <span class="badge badge-dark"></span>
+                                    </div>
+                                </div>
+                                <div class="card-body py-2"> 
+                                    <a href="jobs.html" class="icons font-weight-semibold"><i class="fa fa-usd  text-muted me-1"></i> 10,000-20,000</a> 
+                                    <a class="me-4 pull-right"><i class="fa fa-clock-o  text-muted me-1"></i> {{ $jobs->job_type }}</a> 
+                                </div>
+                                <div class="card-body py-2">
+                                    <div class="d-flex"> 
+                                        <img
+                                            src="https://www.spruko.com/demo/rejoin/Rejoin/assets/images/products/logo/img1.png"
+                                            class="border brround avatar-md me-2" alt="avatar-img">
+                                        <div> 
+                                            <a href="profile.html" class="text-default fs-13">
+                                                {{ $jobs->company->company_name }} </a>
+                                            <small class="d-block text-muted">2 days ago</small> </div>
+                                          {{--  <div class="ms-auto text-muted"> <a href="jobs.html" class="btn btn-sm btn-outline-secondary">See Details</a> </div>  --}}
+                                    </div>
+                                </div>
+                                {{--  <div class="d-flex mb-3"><img
+                                        src="{{ asset('thumbnail/'.$jobs->company->company_logo ) }}" width="70"
+                                        height="70"></div>
+                                <span class="part-time"><a href="{{ url('vacancy/'.$jobs->id) }}"> {{ $jobs->title}}</a>
+                                </span>
+                                <span class="urgent">Urgent</span>
+                                <h6><b>{{ $jobs->category->name }}</b></h6>
+                                <h6>{{ $jobs->province->name }}- <span class="badge badge-dark">{{ $jobs->job_type }}</span> <span class="pull-right"> {{ $jobs->salary.' - '.$jobs->salary_upto }}
+                                        USD </span>
+                                </h6>
+                                <hr />
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><a
+                                                href="{{ url('vacancy/'.$jobs->id) }}">Apply Now</a></button>
+                                    </div>
+                                    <span class="job-list-time order-1"><i class="fa fa-1x fa-clock-o "></i> 2W
+                                        ago</span>
+                                </div>  --}}
+                            </div>
+                    </div>
+                    @endforeach 
+                    <div class="pull-right">
+                        {!! $job->links() !!}
+                    </div>
+
+                    {{-- <div class="container">
                         @foreach ( $job as $jobs)
                         <div class="job-item p-4 mb-4">
                             <div class="row g-4">
@@ -148,9 +160,7 @@
                             {!! $job->links() !!}
                         </div>
 
-                    </div>
-
-
+                    </div> --}}
                 </div>
             </div>
         </div>

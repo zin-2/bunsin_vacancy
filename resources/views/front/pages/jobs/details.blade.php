@@ -1,11 +1,3 @@
-/*-----------------------------------------------------
- * NAME : details.blade.php
- * VER : v0.1
- * PROJ : KH-WORKS
- * Copyright 20221129 KH-WORKS All rights reserved
- *-----------------------------------------------------
- */
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,50 +32,30 @@
                     <li><a href="job-list.html">Engineer/Architects</a></li>
                     <li>UI & UX Designer</li>
                 </ol>
-                <h2 style="color:#003366" class="title">{{ $vacancy->title }}</h2>
+                <h2 class="title">{{ $vacancy->title }}</h2>
             </div>
             <div class="job-details">
                 <div class="section job-ad-item">
                     <div class="item-info">
                         <div class="item-image-box">
                             <div class="item-image">
-                                <img src="https://demo.htmlcodex.com/2246/job-portal-website-template/img/com-logo-1.jpg"
-                                    alt="Image" class="img-fluid">
+                                <img src="https://demo.themeregion.com/jobs/images/job/4.png" alt="Image"
+                                    class="img-fluid">
                             </div>
                         </div>
                         <div class="ad-info">
-                            <span><a href="#" class="title">{{ $vacancy->title }}</a></span>
-
-
-
+                            <span><span><a href="#" class="title">{{ $vacancy->title }}</a></span> @ <a href="#"> Dropbox Inc</a></span>
                             <div class="ad-meta">
                                 <ul>
-                                    <li><a href="#">{{ $vacancy->province->name }}</a></li>
-                                    <li><a href="#">Full Time</a></li>
-                                    <li>{{ $vacancy->salary. ' - '.$vacancy->salary_upto.' $ ' }}</li>
-                                    <li>{{ $vacancy->category->name }}</a></li>
-                                    <li>Application Deadline : {{ $vacancy->closing_date }}</li>
-
-
+                                    <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>{{ $vacancy->province->name }}</a></li>
+                                    <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
+                                    <li><i class="fa fa-usd"> </i> {{ $vacancy->salary. ' - '.$vacancy->salary_upto }}</li>
+                                    <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a>
+                                    </li>
+                                    <li><i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline : {{ \Carbon\Carbon::parse($vacancy->closing_date)->isoFormat('MMM-D-Y')}}</li>
                                 </ul>
-
                             </div>
                         </div>
-
-                @if(Auth::check())
-                <div class="button">
-                    <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary"><i
-                            class="fa fa-bolt" aria-hidden="true"></i> Apply Nows</a>
-                    <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i
-                            class="fa fa-save" aria-hidden="true"></i> Save</a>
-                </div>
-                @else
-                <div class="button">
-                    <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-bolt"
-                            aria-hidden="true"></i> Apply Now</a>
-                    <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i> Save</a>
-                </div>
-                @endif
                     </div>
                 </div>
                 <div class="job-details-info">
@@ -130,6 +102,40 @@
                         </div>
 
                         <div class="col-sm-4">
+                            <div class="section job-short-info">
+                                <div class="social-media">
+                                    @if(Auth::check())
+                                    @if($userBookmark && $isApplied)
+                                    <div class="button">
+                                        <a href="#" data-toggle="modal" data-target="#" class="btn btn-primary"><i
+                                                class="fa fa-briefcase" aria-hidden="true"></i> Applied</a>
+                                        @if($userBookmark->status =="Y")
+                                        <a id="bookmarkID" href="#" data-toggle="modal" data-href="{{$userBookmark->id}}"
+                                            data-target="#model_unsave" class="btn btn-primary bookmark"><i class="fa fa-bookmark-o"
+                                                aria-hidden="true"></i> Saved</a>
+                                        @elseif($userBookmark->status =="N")
+                                        <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i
+                                                class="fa fa-bookmark-o" aria-hidden="true"></i> Save</a>
+                                        @endif
+            
+                                    </div>
+                                    @else
+                                    <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary"><i
+                                            class="fa fa-briefcase" aria-hidden="true"></i> Apply Now</a>
+                                    <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i
+                                            class="fa fa-bookmark-o" aria-hidden="true"></i> Save</a>
+                                    @endif
+                                    @else
+                                    <div class="button">
+                                        <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-briefcase"
+                                                aria-hidden="true"></i> Apply Now</a>
+                                        <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-bookmark-o"
+                                                aria-hidden="true"></i> Save</a>
+                                    </div>
+                                    @endif
+                    
+                                </div>
+                            </div>
                             <div class="section job-short-info">
                                 <h1>Short Info</h1>
                                 <ul>
@@ -188,7 +194,26 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                                <p>Do you want to save this job applicaiton ?</p>
+                            @if(session('error'))
+                            <div class="alert alert-warning">{{session('error')}}</div>
+                            @endif
+
+                            <div class="form-group {{ $errors->has('name')? 'has-error':'' }}">
+                                <label for="name" class="control-label">Notes :</label>
+                                <input type="text" class="form-control" id="notes" name="name" value="{{old('name')}}"
+                                    placeholder="Notes">
+                                <font style="color:red"> {{ $errors->has('name') ? $errors->first('name') : '' }}
+                                </font>
+                            </div>
+
+                            <div class="form-group {{ $errors->has('resume')? 'has-error':'' }}">
+                                <label for="resume" class="control-label">Resume :</label>
+                                <input type="file" class="form-control" id="resume" name="resume"
+                                    accept=".doc,.docx,.pdf">
+                                <p class="text-muted"><i><strong>File types: pdf,doc,docx</strong></i></p>
+                                <font style="color:red"> {{ $errors->has('resume') ? $errors->first('resume') : '' }}
+                                </font>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -203,14 +228,11 @@
         <div class="modal fade" id="modal_save" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-
-                    <form action="#" method="post" id="applyJob" enctype="multipart/form-data">
+                    <form action="#" id="application_save_id" enctype="multipart/form-data">
                         <meta name="csrf-token" content="{{ csrf_token() }}">
                         <input type="hidden" id="job_id" value="{{ $vacancy->id }}" />
                         @if(auth::check())
                         <input type="hidden" id="user_id" value="{{ Auth::user()->id }}" />
-                        @else
-                        <input type="hidden" id="user_id" value="" />
                         @endif
                         <div style="background-color: #003366;" class="modal-header">
                             <h5 style="color:#fff;" class="modal-title">Online job application</h5>
@@ -225,8 +247,35 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button style="background-color:#003366;color:#fff;" type="submit" class="btn btn-default"
-                                id="report_ad">Save</button>
+                            <button style="background-color:#003366;color:#fff;" type="submit"
+                                class="btn btn-default">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal fade" id="model_unsave" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="#" id="application_unsave_id" enctype="multipart/form-data">
+                        <meta name="csrf-token" content="{{ csrf_token() }}">
+                        <input type="hidden" id="job_id" value="{{ $vacancy->id }}" />
+                        <div style="background-color: #003366;" class="modal-header">
+                            <h5 style="color:#fff;" class="modal-title">Online job application</h5>
+                            <button style="color:#fff;" ; type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>Do you want to <span style="color:red;"><b>unsave</b></span> this job ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button style="background-color:#003366;color:#fff;" type="submit"
+                                class="btn btn-default">Save</button>
                         </div>
                     </form>
                 </div>
@@ -245,8 +294,8 @@
 <script src="{{ asset('js/jquery.validate.js') }}"></script>
 <script>
     $(document).ready(function($) {
-  // just for the demos, avoids form submit
-$("#applyJob").validate({
+     // just for the demos, avoids form submit
+    $("#applyJob").validate({
     rules: {
         name: {
                 required: true,
@@ -282,10 +331,13 @@ $("#applyJob").validate({
             processData: false,
             success: function(result)
             {
-                console.log(result);
+                //sconsole.log(result);
                 toastr.success('This Vacancy has been Applied !'); 
                 window.$('#applyJobModal').modal('hide');
                 $("#applyJob").trigger("reset");
+                setTimeout(function(){
+                    window.location.reload();
+                 }, 4000);
             },error : function(err){
                 console.log(err);
             }
@@ -294,4 +346,81 @@ $("#applyJob").validate({
     }
  });
 });
+  // just for the demos, avoids form submit
+  $("#application_save_id").validate({
+    rules: {
+    }, submitHandler: function (form) {
+            var job_id = $('#job_id').val();
+            var user_id = $('#user_id').val();
+          
+            $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+         });
+          $.ajax({
+            url: "{{ url('applicant-save') }}/" + job_id +'/'+ user_id ,
+            data: {
+                job_id : job_id,
+                user_id : user_id
+            },
+            type: "POST",
+            dataType:"json",
+            contentType: false, // The content type used when sending data to the server.
+            cache: false, // To unable request pages to be cached
+            processData: false,
+            success: function(result)
+            {
+                //console.log(result);
+                toastr.success('This Vacancy has been Applied !'); 
+                window.$('#modal_save').modal('hide');
+                setTimeout(function(){
+                    window.location.reload();
+                 }, 4000);
+            },error : function(err){
+                console.log(err);
+            }
+        });
+    }
+});
+
+
+// Unsave job application
+$("#application_unsave_id").validate({
+    rules: {
+    }, submitHandler: function (form) {
+            var job_id = $('#job_id').val();
+            var id = $('#bookmarkID').attr('data-href');
+            {{--  //console.log(job_id);  --}}
+            $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+         });
+          $.ajax({
+            url: "{{ url('applicant-unsave') }}/" + job_id ,
+            data: {
+                job_id : job_id,
+                id : id
+            },
+            type: "POST",
+            dataType:"json",
+            contentType: false, // The content type used when sending data to the server.
+            cache: false, // To unable request pages to be cached
+            processData: false,
+            success: function(result)
+            {
+                //console.log(result);
+                toastr.success('This Vacancy has been unsaved !'); 
+                window.$('#model_unsave').modal('hide');
+                setTimeout(function(){
+                    window.location.reload();
+                 }, 4000);
+            },error : function(err){
+                console.log(err);
+            }
+        });
+    }
+});
+
 </script>

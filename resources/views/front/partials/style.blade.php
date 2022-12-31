@@ -8,7 +8,7 @@
     <link id="preset" rel="stylesheet" href="{{asset('css/preset1.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
      <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
-   
+     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,300,600,700' rel='stylesheet' type='text/css'>
 

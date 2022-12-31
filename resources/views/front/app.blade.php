@@ -18,6 +18,9 @@
     <![endif]-->
 
     <style>
+        .title {
+            color:#003366 !important;
+        }
         .box-shadow {
            border-color: #003366;
         }

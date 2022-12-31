@@ -10,6 +10,8 @@ class Category extends Model
     protected $table ="category";
     protected $fillable = ['name'];
 
+    public $timestamps = false;
+
     public function Job(){
         return $this->hasMany(Job::class);
     }

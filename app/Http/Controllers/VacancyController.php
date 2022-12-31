@@ -7,6 +7,9 @@ use App\Model\Job;
 use App\Model\Province;
 use Illuminate\Http\Request;
 use App\Model\Company;
+use App\Model\UserBookmark;
+use App\Model\UserJob;
+use Illuminate\Support\Facades\Auth;
 
 class VacancyController extends Controller
 {
@@ -18,7 +21,7 @@ class VacancyController extends Controller
     public function index()
     {
         //
-        $job = Job::with(['category','Province','District','company'])->paginate(5);
+        $job = Job::with(['category','Province','District','company'])->paginate(6);
         $category = Category::all();
         $province = Province::all();
         // dd($job);
@@ -72,7 +75,15 @@ class VacancyController extends Controller
     {
         //
         $vacancy = Job::with(['category','Province','District'])->where('id',$id)->first();
-        return view('front.pages.jobs.details',compact(['vacancy']));
+        $userBookmark ='';
+        $isApplied='';
+        if(Auth::check()){
+            $user_id = Auth::user()->id;
+            $userBookmark = UserBookmark::where('user_id','=',$user_id)->where('job_id','=',$vacancy->id)->first();
+            $isApplied =  UserJob::where('user_id','=',$user_id)->where('job_id','=',$vacancy->id)->first();
+           // dd($isApplied);
+        }
+        return view('front.pages.jobs.details',compact(['vacancy','userBookmark','isApplied']));
     }
 
     /**

@@ -78,7 +78,7 @@ select:focus,
 
 .title {
     line-height: 34px;
-    /* color: #fff; */
+    color: #fff;
     font-family: ubuntu, sans-serif;
     font-weight: 700
 }
@@ -770,7 +770,7 @@ a.verified i {
 
 .breadcrumb li,
 .breadcrumb li a {
-    /* color: #fff; */
+    color: #fff;
     font-weight: 300
 }
 
@@ -2231,7 +2231,7 @@ input:-moz-placeholder {
 
 .job-ad-item .btn.btn-primary {
     padding: 5px 30px 6px;
-    margin-top: 15px;
+    /* margin-top: 15px; */
     font-size: 14px;
     margin-right: 25px;
     border-radius: 0px;
@@ -2324,7 +2324,7 @@ input:-moz-placeholder {
 }
 
 .job-bg {
-    background-image: url("https://eyecix.com/html/careerfy/extra-images/subheader-bg.jpg");
+    background-image: url('/images/homepage/breakscram.png');
     background-repeat: no-repeat;
     background-size: contain
 }

@@ -44,7 +44,8 @@ Route::get('check-email/{id}', 'UserController@checkPassword')->name('check_emai
 Route::post('change-password', 'UserController@changePasswordPost');
 Route::get('applicant', 'UserController@employerApplicant')->name('employer_applicant');
 Route::get('applicant-create', 'UserController@employerApplicantCreate')->name('employer_applicant_create');
-Route::get('applicant-save', 'UserController@employerApplicantSave')->name('employer_applicant_save');
+Route::post('applicant-save/{job_id}/{user_id}', 'UserController@employerApplicantSave')->name('employer_applicant_save');
+Route::post('applicant-unsave/{job_id}', 'UserController@employerApplicantUnSave')->name('employer_applicant_unsave');
 Route::get('applicant-edit/{id}', 'UserController@employerApplicantEdit')->name('employer_applicant_edit');
 Route::patch('applicant-update/{id}', 'UserController@employerApplicantUpdate')->name('employer_applicant_update');
 Route::post('applicant-create-post', 'UserController@employerApplicantPost')->name('employer_applicant_post');

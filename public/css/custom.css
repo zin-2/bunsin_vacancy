@@ -1,0 +1,85 @@
+
+.mb-4,
+.my-4 {
+    margin-bottom: 1.5rem !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .1) !important;
+    border-radius: 16px;
+}
+
+.card-body .part-time {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 8px;
+    display: inline-block;
+    position: absolute; 
+    top: 10px;
+    right: 10px;
+    background-color: #ffc107;
+}
+
+.card-body .urgent {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 8px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #003366;
+}
+
+.company-logo {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 8px;
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    background-color: #003366;
+}
+
+.card-body {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 0 0 45px rgb(0 0 0 / 8%);
+    transition: .5s;
+}
+
+.avatar-md {
+    width: 2.5rem;
+     height: 2.5rem; 
+    line-height: 2.5rem;
+    font-size: 1rem; 
+}
+.brround {
+    border-radius: 50%;
+}
+.mt-auto, .my-auto {
+    margin-top: auto !important;
+}
+.card-body> :last-child {
+    margin-bottom: 0;
+}
+.d-flex {
+    display: -ms-flexbox !important;
+    /* display: flex !important; */
+}
+.pb-2, .py-2 {
+    padding-bottom: 0.5rem !important;
+}
+.me-3, .mx-3 {
+    margin-right: 0.75rem !important;
+}
+.border {
+    border: 1px solid #e8ebf3 !important;
+}
+.btn-group-sm>.btn, .btn-sm {
+    font-size: 0.75rem;
+    min-width: 1.625rem;
+}
+.text-warning {
+    color: #ffa22b !important;
+}

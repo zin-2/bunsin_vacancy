@@ -10,6 +10,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Company;
+use App\Model\UserBookmark;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
@@ -45,9 +46,30 @@ class UserController extends Controller
         return view('pages.candidate.index',compact(['applicant']));
     }
 
-    public function employerApplicantSave(){
-
-        return response()->json('hello');
+    public function employerApplicantSave(Request $request)
+    {
+        $bookmark = userBookmark::where([['user_id','=',Auth::user()->id],['job_id','=',$request->job_id]])->first();
+        if(!empty($bookmark)){
+            $bookmark::where([['user_id','=',Auth::user()->id],['job_id','=',$request->job_id]])->update(['status'=>'Y']);
+        }else{
+            $bookmark = userBookmark::create(array(
+                'user_id' =>  $request->user_id,
+                'job_id' => $request->job_id,
+                'status' => 'Y'
+            ));
+        }
+        $bookmark->save();
+        return response()->json($bookmark);
+    }
+    public function employerApplicantUnSave(Request $request)
+    {
+     
+        $userBookmark = userBookmark::where([['user_id','=',Auth::user()->id],['job_id','=',$request->job_id]])->first();
+        if($userBookmark->status =="Y"){
+            $userBookmark->status ="N";
+        }
+        $userBookmark->save();
+        return response()->json( $userBookmark );
     }
     public function employerApplicantCreate()
     {
