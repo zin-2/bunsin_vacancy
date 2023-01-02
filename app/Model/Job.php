@@ -11,10 +11,13 @@ class Job extends Model
     protected $fillable = [
     'category_id',
     'company_id',
+    'user_id',
     'province_id',
     'district_id',
     'job_type',
     'title',
+    'closing_date',
+    'exp_level',
     'description',
     'requirement',
     'start_from',
@@ -23,7 +26,12 @@ class Job extends Model
     'is_negotiation',
     'is_active',
     'created_at',
-    'updated_at'
+    'updated_at',
+    'min_salary',
+    'max_salary',
+    'vacancy',
+    'salary_cycle',
+    'experience_required_years'
     ];
 
     public function Company(){

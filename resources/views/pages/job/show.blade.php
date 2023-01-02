@@ -52,7 +52,7 @@
                 </tr>
                  <tr>
                     <th>Salary Range</th>
-                    <td>{{ $job->salary.' - '.$job->salary_upto.' USD / '.ucfirst($job->salary_cycle) }}</td>
+                    <td>{{ $job->min_salary.' - '.$job->max_salary.' USD / '.ucfirst($job->salary_cycle) }}</td>
                 </tr>
                  <tr>
                     <th>Closing Date</th>
@@ -64,7 +64,7 @@
                 </tr>
                 <tr>
                     <th>Contact Person</th>
-                    <td>{{ $job->company->first_name .''.$job->company->last_name}}</td>
+                    <td>{{ $job->company->first_name .' '.$job->company->last_name}}</td>
                 </tr>
                 <tr>
                     <th>Industry</th>

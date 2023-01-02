@@ -30,12 +30,8 @@
                 <tr>
                     <th>No</th>
                     <th>Title</th>
-                    <th>Type</th>
-                    <th>Position</th>
-                    <th>Type</th>
-                    <th>Closing Date</th>
-                    <th>Location</th>
-                    <th>Create Date</th>
+                    <th>Job Type</th>
+                    <th>Deadline</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -46,11 +42,7 @@
                     <td>{{ $key + 1 }}</td>
                     <td><a href="{{ route('job.show',[$jobs->id])}}">{{ $jobs->title }}</a> </td>
                     <td>{{ $jobs->category->name }}</td>
-                    <td>{{ $jobs->exp_level }}</td>
-                    <td>{{ $jobs->job_type }}</td>
                     <td>{{ date('d-m-Y', strtotime($jobs->closing_date)) }}</td>
-                    <td>{{ $jobs->province->name }}</td>
-                    <td>{{ date('d-m-Y', strtotime($jobs->created_at)) }}</td>
                     <td><span class="badge bg-success">{{ $jobs->status == 1 ? "Deactive" : "Active" }} </span></td>
                     <td>
                         <div class="btn-group">

@@ -13,6 +13,9 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Exception;
+use App\Rules\SalaryRule;
+
 
 class JobController extends Controller
 {
@@ -94,61 +97,77 @@ class JobController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @author Toeng Bunsin
+     * Create Date : 2022012023
      */
     public function store(Request $request)
     {
-        // dd("hello");
-        //create job
-        $rules = [
-            'title' => 'required',
-            'category' => 'required',
-            'idProvince'=>'required',
-            'idDistrict' => 'required',
-            'idCompany'=> 'required',
-            'vacancy' => 'required',
-            'yearRequired'=>'required'
+        //dd($request->jobType);
+        //     //Convert your value to float
+        $min_salary = floatval(str_replace(',' ,'', $request->input('min_salary')));
+        $max_salary = floatval(str_replace(',' ,'', $request->input('max_salary')));
 
-        ];
-        $errorMessage = [
-            'required' => 'Enter your :attribute first.'
-        ];
-        $this->validate($request, $rules, $errorMessage);
-        // dd($rules);
-        $job = new Job();
-        $job->title = $request->title;
-        $job->user_id = auth()->user()->id;
-        $job->company_id = $request->idCompany;
-        $job->Province()->associate($request->idProvince);
-        $job->District()->associate($request->idDistrict);
-        $job->Category()->associate($request->category);
-        // $job->level = $request->levelId;
-        $job->closing_date = Carbon::parse($request->closing_date)->format('Y-m-d');
-        $job->description = $request->description;
-        $job->requirement = $request->requirement;
-        $job->vacancy = $request->vacancy;
-        $job->salary_cycle = $request->salaryCycle;
-        $job->job_type = $request->jobType;
-        $job->gender = $request->gender;
-        $job->exp_level = $request->expLevel;
-        // dd($request->expLevel);
-        $job->created_at = Carbon::now();
-        $job->status = 0;
-        if($request->isUrgent == true){
-            $job->is_urgent = 1;
-        }
-        if($request->is_negotiable == 1){
-            $job->is_negotiable = 1;
-        }
-        if($request->is_negotiable == null){
-            $request->is_negotiable = 0;
-            $job->salary = $request->salaryFrom;
-            $job->salary_upto = $request->salaryTo;
-        }
-        $job->save();
-        // dd($job);
+        //     //Get your range
+        $min = $min_salary  + 0.01;
+        $max = $max_salary - 0.01;
+        Validator::make($request->all(), [
+            'title' => 'required',
+            'category'=> 'required',
+            'idCompany' => 'required',
+            'vacancy'  => 'required',
+            'description' =>'required',
+            'requirement'=>'required',
+            'closing_date'=>'required',
+            'education' => 'required',
+            'experience' => 'required',
+            'jobType' => 'required',
+            'min_salary' => [
+                'required',
+                function($attribute, $value, $fail) use($min_salary, $max) {
+                        if ($min_salary < 0 ||  $min_salary > $max) {
+                            return $fail($attribute.' must be between 0 and maximum salary.');
+                        }
+                    }],
+                'max_salary' => [
+                'required',
+                function($attribute, $value, $fail) use($max_salary, $min) {
+                        if ($max_salary < $min) {
+                            return $fail($attribute.' must be greater than minimum salary.');
+                        }
+              }]
+        ])->validate();
+
+        //dd($request->min_salary);
+       try{
+            $job = Job::create([
+                'title' => $request->title,
+                'user_id' => auth()->user()->id,
+                'company_id' => $request->idCompany,
+                'category_id' =>  $request->category,
+                'closing_date' => Carbon::parse($request->closing_date)->format('Y-m-d'),
+                'description' => $request->description,
+                'requirement' => $request->requirement,
+                'vacancy'     =>  $request->vacancy,
+                'salary_cycle' => $request->salaryCycle,
+                'job_type'   => $request->jobType,
+                'gender'     => $request->gender,
+                'exp_level' => $request->education,
+                'experience_required_years' => $request->experience,
+                'gender'=>$request->gender,
+                'closing_date' =>$request->closing_date,
+                'created_at' => Carbon::now(),
+                'province_id' => 1,
+                'district_id' => 1,
+                'min_salary' => $request->min_salary,
+                'max_salary' => $request->max_salary
+            ]);
+       }catch(Exception $e){
+        return $e->getMessage();
+       // var_dump('Exception Message: '. $message);
+       }
         return redirect()->route('job.index')->with('message','Job created successfully!');
     }
 
@@ -194,52 +213,68 @@ class JobController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $rules = [
-            'title' => 'required',
-            'category' => 'required',
-            'idProvince'=>'required',
-            'idDistrict' => 'required',
-            'idCompany'=> 'required',
-            'vacancy' => 'required',
-            'yearRequired'=>'required'
+        //dd($id);
+        $min_salary = floatval(str_replace(',' ,'', $request->input('min_salary')));
+        $max_salary = floatval(str_replace(',' ,'', $request->input('max_salary')));
 
-        ];
-        $errorMessage = [
-            'required' => 'Enter your :attribute first.'
-        ];
-        $this->validate($request, $rules, $errorMessage);
-        // dd($rules);
-        $job = job::find($id);
-        $job->title = $request->title;
-        $job->user_id = auth()->user()->id;
-        $job->company_id = $request->idCompany;
-        $job->Province()->associate($request->idProvince);
-        $job->District()->associate($request->idDistrict);
-        $job->Category()->associate($request->category);
-        // $job->level = $request->levelId;
-        $job->closing_date = Carbon::now();
-        $job->description = $request->description;
-        $job->requirement = $request->requirement;
-        $job->vacancy = $request->vacancy;
-        $job->salary_cycle = $request->salaryCycle;
-        $job->job_type = $request->jobType;
-        $job->gender = $request->gender;
-        $job->exp_level = $request->expLevel;
-        // dd($request->expLevel);
-        $job->created_at = Carbon::now();
-        $job->status = 0;
-        if($request->isUrgent == true){
-            $job->is_urgent = 1;
-        }
-        if($request->is_negotiable == 1){
-            $job->is_negotiable = 1;
-        }
-        if($request->is_negotiable == null){
-            $request->is_negotiable = 0;
-            $job->salary = $request->salaryFrom;
-            $job->salary_upto = $request->salaryTo;
-        }
-        $job->save();
+        //     //Get your range
+        $min = $min_salary  + 0.01;
+        $max = $max_salary - 0.01;
+        Validator::make($request->all(), [
+            'title' => 'required',
+            'category'=> 'required',
+            'idCompany' => 'required',
+            'vacancy'  => 'required',
+            'description' =>'required',
+            'requirement'=>'required',
+            'closing_date'=>'required',
+            'education' => 'required',
+            'experience' => 'required',
+            'jobType' => 'required',
+            'min_salary' => [
+                'required',
+                function($attribute, $value, $fail) use($min_salary, $max) {
+                        if ($min_salary < 0 ||  $min_salary > $max) {
+                            return $fail($attribute.' must be between 0 and maximum salary.');
+                        }
+                    }],
+                'max_salary' => [
+                'required',
+                function($attribute, $value, $fail) use($max_salary, $min) {
+                        if ($max_salary < $min) {
+                            return $fail($attribute.' must be greater than minimum salary.');
+                        }
+              }]
+        ])->validate();
+
+        //dd($request->min_salary);
+       try{
+            $job = Job::where('id',$id)->update([
+                'title' => $request->title,
+                'user_id' => auth()->user()->id,
+                'company_id' => $request->idCompany,
+                'category_id' =>  $request->category,
+                'closing_date' => Carbon::parse($request->closing_date)->format('Y-m-d'),
+                'description' => $request->description,
+                'requirement' => $request->requirement,
+                'vacancy'     =>  $request->vacancy,
+                'salary_cycle' => $request->salaryCycle,
+                'job_type'   => $request->jobType,
+                'gender'     => $request->gender,
+                'exp_level' => $request->education,
+                'experience_required_years' => $request->experience,
+                'gender'=>$request->gender,
+                'closing_date' =>$request->closing_date,
+                'created_at' => Carbon::now(),
+                'province_id' => 1,
+                'district_id' => 1,
+                'min_salary' => $request->min_salary,
+                'max_salary' => $request->max_salary
+            ]);
+       }catch(Exception $e){
+        return $e->getMessage();
+       // var_dump('Exception Message: '. $message);
+       }
         return redirect()->route('job.index')->with('message','Job Updated successfully!');
     }
 

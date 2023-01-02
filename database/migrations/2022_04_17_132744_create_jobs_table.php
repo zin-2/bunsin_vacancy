@@ -35,11 +35,11 @@ class CreateJobsTable extends Migration
             $table->tinyInteger('experience_required_years')->default(0)->nullable(); //In Years
             $table->text('description');
             $table->text('requirement');
-            $table->integer('salary')->default(0)->nullable(); //Salary from
-            $table->integer('salary_upto')->default(0)->nullable(); //Salary to (Up range)
+            $table->decimal('min_salary',10,2);
+            $table->decimal('max_salary',10,2);
             $table->tinyInteger('is_negotiable')->default(0)->nullable();
             $table->boolean('is_urgent')->default(false);
-            $table->tinyInteger('status')->default(0)->nullable(); //0,pending,1=approved,2=blocked
+            $table->tinyInteger('status')->default(0)->nullable(); //01:pending,02:approved,09:blocked
 
             $table->timestamps();
         });
