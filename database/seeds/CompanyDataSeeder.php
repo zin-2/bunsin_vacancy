@@ -28,6 +28,8 @@ class CompanyDataSeeder extends Seeder
                     'facebook_link'=>'',
                     'linkin_link'=>'',
                     'primary_address'=>'',
+                    'lat'=>'11.5564',
+                    'long'=>'104.9282',
                     'status'=>'active',
               ]
             ];

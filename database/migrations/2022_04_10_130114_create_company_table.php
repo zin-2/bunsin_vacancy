@@ -30,6 +30,8 @@ class CreateCompanyTable extends Migration
             $table->string('facebook_link')->nullable();
             $table->string('linkIn_link')->nullable();
             $table->string('primary_address')->nullable();
+            $table->decimal('lat',10, 8)->nullable();
+            $table->decimal('long',11, 8)->nullable();
             $table->enum('status',['active','deactive'])->default('active');
             $table->timestamps();
         });

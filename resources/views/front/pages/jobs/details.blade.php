@@ -49,7 +49,7 @@
                                 <ul>
                                     <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>{{ $vacancy->province->name }}</a></li>
                                     <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Full Time</a></li>
-                                    <li><i class="fa fa-usd"> </i> {{ $vacancy->salary. ' - '.$vacancy->salary_upto }}</li>
+                                    <li><i class="fa fa-usd"> </i> {{ $vacancy->min_salary. ' - '.$vacancy->max_salary }}</li>
                                     <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>HR/Org. Development</a>
                                     </li>
                                     <li><i class="fa fa-hourglass-start" aria-hidden="true"></i>Application Deadline : {{ \Carbon\Carbon::parse($vacancy->closing_date)->isoFormat('MMM-D-Y')}}</li>
@@ -105,33 +105,21 @@
                             <div class="section job-short-info">
                                 <div class="social-media">
                                     @if(Auth::check())
-                                    @if($userBookmark && $isApplied)
-                                    <div class="button">
-                                        <a href="#" data-toggle="modal" data-target="#" class="btn btn-primary"><i
-                                                class="fa fa-briefcase" aria-hidden="true"></i> Applied</a>
-                                        @if($userBookmark->status =="Y")
-                                        <a id="bookmarkID" href="#" data-toggle="modal" data-href="{{$userBookmark->id}}"
-                                            data-target="#model_unsave" class="btn btn-primary bookmark"><i class="fa fa-bookmark-o"
-                                                aria-hidden="true"></i> Saved</a>
-                                        @elseif($userBookmark->status =="N")
-                                        <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i
-                                                class="fa fa-bookmark-o" aria-hidden="true"></i> Save</a>
-                                        @endif
-            
-                                    </div>
+                                         @if($userBookmark->status =="Y")
+                                            <a id="bookmarkID" href="#" data-toggle="modal" data-href="{{$userBookmark->id}}" data-target="#model_unsave" class="btn btn-primary bookmark"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Saved</a>
+                                         @elseif($userBookmark->status =="N")
+                                            <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Save</a>
+                                         @endif
+                                         @if($isApplied)
+                                            <a href="#" data-toggle="modal" data-target="#" class="btn btn-primary"><i class="fa fa-briefcase" aria-hidden="true"></i> Applied</a>
+                                         @else 
+                                            <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary"><i class="fa fa-briefcase" aria-hidden="true"></i> Apply Now</a>
+                                         @endif
                                     @else
-                                    <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary"><i
-                                            class="fa fa-briefcase" aria-hidden="true"></i> Apply Now</a>
-                                    <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i
-                                            class="fa fa-bookmark-o" aria-hidden="true"></i> Save</a>
-                                    @endif
-                                    @else
-                                    <div class="button">
-                                        <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-briefcase"
-                                                aria-hidden="true"></i> Apply Now</a>
-                                        <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-bookmark-o"
-                                                aria-hidden="true"></i> Save</a>
-                                    </div>
+                                        <div class="button">
+                                            <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-briefcase" aria-hidden="true"></i> Apply Now</a>
+                                            <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Save</a>
+                                        </div>
                                     @endif
                     
                                 </div>

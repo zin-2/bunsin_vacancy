@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Company;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
+use Exception;
 class CompanyController extends Controller
 {
     /**
@@ -45,15 +46,16 @@ class CompanyController extends Controller
         $rules = [
             'company_name' => 'required',
             'description' =>'required',
+            'photo'=>'required'
         ];
         $errorMessage = [
             'required' => 'Enter your :attribute first.'
         ];
         $this->validate($request, $rules, $errorMessage);
-        if ($request->file('company_logo')) {
+        if ($request->file('photo')) {
             // $fileName =  "image-".time().'.'.$request->company_logo->getClientOriginalExtension();
             // $request->company_logo->storeAs('company', $fileName);
-            $image = $request->file('company_logo');
+            $image = $request->file('photo');
             $input['imagename'] = "image-".time().'.'.$image->extension();
          
             $destinationPath = public_path('/thumbnail');
@@ -82,10 +84,10 @@ class CompanyController extends Controller
                 "user_id" => Auth::user()->id,
                 "status" => "Active",
                 "description" => $request->description,
-                "company_logo"=> $input['imagename'],
-               
+                "company_logo"=> $input['imagename']       
             ]);
-        }       
+        }  
+            
         return redirect()->route('company.index')->with('message','Category created successfully!');
     }
 
@@ -124,7 +126,6 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $rules = [
             'company_name' => 'required',
             'description' =>'required',
@@ -133,30 +134,51 @@ class CompanyController extends Controller
             'required' => 'Enter your :attribute first.'
         ];
         $this->validate($request, $rules, $errorMessage);
-        if ($request->file('company_logo')) {
-            // $fileName =  "image-".time().'.'.$request->company_logo->getClientOriginalExtension();
-            // $request->company_logo->storeAs('company', $fileName);
-            $image = $request->file('company_logo');
-            $input['imagename'] = "image-".time().'.'.$image->extension();
-         
-            $destinationPath = public_path('/thumbnail');
-            $img = Image::make($image->path());
-            $img->resize(100, 100, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($destinationPath.'/'.$input['imagename']);
-       
-            $destinationPath = public_path('/images');
-            $image->move($destinationPath, $input['imagename']);
-
-           $company = company::find($id);
-           $company->company_name  = $request->company_name;
-           $company->industry = $request->industry;
-           $company->user_id  = Auth::user()->id;
-           $company->status = "Active";
-           $company->description  = $request->description;
-           $company->company_logo = $input['imagename'];
-           $company->save();
-        }       
+        try{
+          $company = company::find($id);
+            $image = $request->file('photo');
+            if($image != ""){
+                $input['imagename'] = "image-".time().'.'.$image->extension();
+                $destinationPath = public_path('/thumbnail');
+                $img = Image::make($image->path());
+                $img->resize(100, 100, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($destinationPath.'/'.$input['imagename']);
+                 //upload new file
+                 $destinationPath = public_path('/images');
+                 $image->move($destinationPath, $input['imagename']);   
+                    // code for remove old file
+                    if($company->company_logo != ""  && $company->company_logo != null){
+                        $file_old = $destinationPath.$company->company_logo;
+                       // unlink($file_old);
+                    }
+            }else{
+                $input['imagename'] = $company->company_logo;
+            }
+            Company::where('id',$id)->update([
+                        "title" => $request->title,
+                        "first_name" => $request->first_name,
+                        "last_name" => $request->last_name,
+                        "primary_email" => $request->primary_email,
+                        "primary_phone" => $request->primary_phone,
+                        //"secondary_email" => $request->secondary_email,
+                        //"secoundaryPhone" => $request->secoundaryPhone,
+                        "website" => $request->Website,
+                        "facebook_link"=> $request->facebookLink,
+                        "linkIn_link"  => $request->linkInLink,
+                        "primary_address" => $request->primaryAddress,
+                        "company_name" => $request->company_name,
+                        "industry" => $request->industry,
+                        "user_id" => Auth::user()->id,
+                        "status" => "Active",
+                        "description" => $request->description,
+                        "company_logo"=> $input['imagename']       
+             ]);     
+             
+        }catch(Exception $e){
+            return $e->getMessage();
+           // var_dump('Exception Message: '. $message);
+        }     
         return redirect()->route('company.index');
     }
 

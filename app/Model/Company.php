@@ -19,6 +19,8 @@ class Company extends Model
     'facebook_link',
     'linkIn_link',
     'primary_address',
+    'lat',
+    'long'
 ];
 
 
