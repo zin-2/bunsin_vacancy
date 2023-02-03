@@ -35,6 +35,43 @@
                     <th>Email</th>
                     <td>{{ $user->email }}</td>
                 </tr>
+                <tr>
+                    <th>Professional</th>
+                    <td>{{ $user->professional }}</td>
+                </tr>
+                <tr>
+                    <th>Education</th>
+                    <td>{{ $user->education }}</td>
+                </tr>
+                <tr>
+                    <th>Job Roles</th>
+                    <td>{{ $user->job_roles }}</td>
+                </tr>
+                <tr>
+                    <th>Experience</th>
+                    <td>{{ $user->experience }}</td>
+                </tr>
+                <tr>
+                    <th>Skills</th>
+                     
+                    <td>{{ $user->skills }}</td>
+                </tr>
+                <tr>
+                    <th>Languages</th>
+                    <td>{{ $user->languages }}</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>{{ $user->gender }}</td>
+                </tr>
+                <tr>
+                    <th>Website</th>
+                    <td>{{ $user->website }}</td>
+                </tr>
+                <tr>
+                    <th>Bio</th>
+                    <td>{{ $user->bio }}</td>
+                </tr>
                  <tr>
                     <th>status</th>
                    <td> <span class="badge badge-success">{{ $user->is_active == 0 ? "Active" : "Deactive" }}</span></td>

@@ -74,7 +74,8 @@ class VacancyController extends Controller
     public function show($id)
     {
         //
-        $vacancy = Job::with(['category','Province','District'])->where('id',$id)->first();
+        $vacancy = Job::with(['category','Province','District','User'])->where('id',$id)->first();
+        //dd($vacancy);
         $userBookmark ='';
         $isApplied='';
         if(Auth::check()){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Company;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Exception;
@@ -17,7 +18,12 @@ class CompanyController extends Controller
     public function index()
     {
         //
-        $company = Company::where('user_id',auth()->user()->id)->orderBy('id','desc')->get();
+        $user_role = User::find(Auth::user()->id)->first();
+        if($user_role->is_admin == 1){
+            $company = Company::all();
+        }else{
+            $company = Company::where('user_id',auth()->user()->id)->orderBy('id','desc')->get();
+        }
         return view('pages.company.index',compact(['company']));
 
     }

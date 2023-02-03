@@ -59,7 +59,12 @@ class JobController extends Controller
     public function index()
     {
         //
-        $job = job::with(['category','Province','District'])->orderBy('id','desc')->where('user_id',Auth::user()->id)->get();
+        $user_role = user::find(Auth::user()->id)->first();
+        if($user_role->is_admin == 1){
+            $job = job::with(['category','Province','District'])->orderBy('id','desc')->get();
+        }else{
+            $job = job::with(['category','Province','District'])->orderBy('id','desc')->where('user_id',Auth::user()->id)->get();
+        }
         return view('pages.job.index',compact(['job']));
 
     }

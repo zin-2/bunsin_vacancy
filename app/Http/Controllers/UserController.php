@@ -37,12 +37,22 @@ class UserController extends Controller
     }
     public function employerApplicant()
     {
-        //list Applicant
-        if(Auth::user()->is_admin == 1){
-            $applicant = UserJob::with(['job','user'])->orderBy('id','DESC')->get();
-        }else{
-            $applicant = UserJob::with(['job','user'])->where('user_id',Auth::user()->id)->get();
-        }
+            $u_id = JOb::where('user_id',Auth::user()->id)->get();
+            if(count($u_id) > 0){
+                foreach ($u_id as $key => $value) {
+                    # code...d
+                }
+                if(Auth::user()->is_admin == 1){
+                    $applicant = UserJob::with(['job','user'])->orderBy('id','DESC')->get();
+                }else{
+                    $applicant = UserJob::with(['job','user'])->whereIn('job_id',[$value->id])->get();  
+                }
+                }else{
+                $applicant = UserJob::with(['job','user'])->where('job_id',Auth::user()->id)->get();
+
+            }
+            
+        //dd(Auth::user()->id);
         return view('pages.candidate.index',compact(['applicant']));
     }
 
@@ -265,20 +275,32 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $rules = [
-            'name' => 'required',
-            'email' => 'required',
-        ];
-        $data= [
-            'name' => trim($request->input('name')),
-            'email' => strtolower($request->input('email')),
+        // $rules = [
+        //     'name' => 'required',
+        //     'email' => 'required',
+        // ];
+        $user_data = [
+            // 'name' => trim($request->input('name')),
+            // 'email' => strtolower($request->input('email')),
             'is_admin' => 0,
+            'photo'=>$request->photo,
+            'skills'=> $request->skills,
+            'languages'=> $request->languages,
+            'birth_date'=> Carbon::parse($request->birth_date)->format('Y-m-d'),
+            'professional'=>$request->professional,
+            'experience'=>$request->experience,
+            'job_roles'=>$request->job_roles,
+            'education'=>$request->education,
+            'gender'=>$request->gender,
+            'website'=>$request->website,
+            'marital_status'=>$request->marital_status,
+            'bio'=> $request->bio
         ];
-        $errorMessage = [
-            'required' => 'Enter your :attribute first.'
-        ];
-        $this->validate($request, $rules, $errorMessage);
-        User::where('id',$id)->update($data);
+        // $errorMessage = [
+        //     'required' => 'Enter your :attribute first.'
+        // ];
+        //$this->validate($request, $rules, $errorMessage);
+        User::where('id',$id)->update($user_data);
         return redirect()->route('user.index')->with('message','Job Updated successfully!');
     }
 

@@ -1,12 +1,12 @@
 html,
 body {
-    font-family: ubuntu, sans-serif;
+    font-family: 'Open Sans','Kantumruy',sans-serif;
     font-weight: 400;
-    color: #6f6f6f;
+    /* color: #6f6f6f; */
     font-size: 14px;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    background-color: #f7f7f7
+    /* background-color: #f7f7f7 */
 }
 
 h1,
@@ -15,7 +15,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: ubuntu, sans-serif;
+    font-family: 'Open Sans','Kantumruy',sans-serif;;
     font-weight: 400
 }
 
@@ -26,7 +26,7 @@ ul {
 }
 
 a {
-    font-family: ubuntu, sans-serif;
+    font-family: 'Open Sans','Kantumruy',sans-serif;;
     color: #003366
 }
 
@@ -79,7 +79,7 @@ select:focus,
 .title {
     line-height: 34px;
     color: #fff;
-    font-family: ubuntu, sans-serif;
+    font-family: 'Open Sans','Kantumruy',sans-serif;
     font-weight: 700
 }
 
@@ -104,8 +104,8 @@ select:focus,
 .section {
     background-color: #fff;
     border-radius: 4px;
-    padding: 35px 25px;
-    margin-bottom: 25px
+    padding: 14px 25px;
+    margin-bottom: 9px;
 }
 
 .section-title h4 {
@@ -2185,7 +2185,7 @@ input:-moz-placeholder {
 .job-ad-item .ad-meta a,
 .job-ad-item .ad-meta li {
     font-size: 14px;
-    color: #a0a0a0
+    /* color: #a0a0a0 */
 }
 
 .job-ad-item .ad-meta i,
@@ -2345,6 +2345,8 @@ input:-moz-placeholder {
 .job-details .job-ad-item.section {
     /* padding-bottom: 50px; */
     padding-bottom: 0px;
+    box-shadow: 0 0 45px rgb(0 0 0 / 8%);
+    border-radius: 15px;
 }
 
 .job-details .ad-info {
@@ -2452,7 +2454,7 @@ input:-moz-placeholder {
 
 .job-short-info li,
 .company-info li {
-    color: #707070;
+    color: #021d49;
     margin-bottom: 15px;
     /* font-size: 16px */
 }

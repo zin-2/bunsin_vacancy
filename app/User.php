@@ -20,6 +20,18 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name', 'email', 'password','is_admin',
+        'job_roles',
+        'professional',
+        'experience',
+        'birth_date',
+        'photo',
+        'gender',
+        'website',
+        'skills',
+        'languages',
+        'bio',
+        'education',
+        'marital_status'
     ];
 
     /**
@@ -66,5 +78,24 @@ class User extends Authenticatable implements JWTSubject
     public function pricings(){
         return $this->belongsToMany(Pricing::class, 'user_pricing');
         // return $this->belongsTo(User::class);
+    }
+     /**
+     * Set the categories
+     *
+     */
+    public function setCatAttribute($value)
+    {
+        $this->attributes['skills'] = json_encode($value);
+        $this->attributes['languages'] = json_encode($value);
+    }
+  
+    /**
+     * Get the categories
+     *
+     */
+    public function getCatAttribute($value)
+    {
+        return $this->attributes['skills'] = json_decode($value);
+        return $this->attributes['languages'] = json_encode($value);
     }
 }

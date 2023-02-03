@@ -48,6 +48,12 @@
     transition: .5s;
 }
 
+.avatar-md-1 {
+    /* width: 2.5rem; */
+     height: 2.5rem; 
+    line-height: 2.5rem;
+    font-size: 1rem; 
+}
 .avatar-md {
     width: 2.5rem;
      height: 2.5rem; 

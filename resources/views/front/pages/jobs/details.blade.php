@@ -32,19 +32,20 @@
                     <li><a href="job-list.html">Engineer/Architects</a></li>
                     <li>UI & UX Designer</li>
                 </ol>
-                <h2 class="title">{{ $vacancy->title }}</h2>
+                <h2 class="title"><strong>{{ $vacancy->title }}</strong></h2>
             </div>
             <div class="job-details">
                 <div class="section job-ad-item">
                     <div class="item-info">
+                        
                         <div class="item-image-box">
                             <div class="item-image">
-                                <img src="https://demo.themeregion.com/jobs/images/job/4.png" alt="Image"
+                                <img src="{{ asset('images/'.$vacancy->company->company_logo) }}" alt="Image"
                                     class="img-fluid">
                             </div>
                         </div>
                         <div class="ad-info">
-                            <span><span><a href="#" class="title">{{ $vacancy->title }}</a></span> @ <a href="#"> Dropbox Inc</a></span>
+                            <span><a href="#" class="title"><strong>{{ $vacancy->title }}</strong></a></span>
                             <div class="ad-meta">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>{{ $vacancy->province->name }}</a></li>
@@ -65,17 +66,17 @@
                             <div class="section job-description">
 
                                 <div class="responsibilities">
-                                    <h1>Key Responsibilities:</h1>
+                                    <h1><strong>Key Responsibilities:</strong></h1>
                                     <p>{!! $vacancy->description !!}</p>
                                 </div>
                                 <div class="requirements">
-                                    <h1>Requirements</h1>
+                                    <h1><strong>Requirements</strong></h1>
                                     <p>{!! $vacancy->requirement !!}</P>
                                 </div>
 
                             </div>
 
-                            <h1>Contact Information </h1>
+                            <h1><strong>Contact Information </strong></h1>
                             <hr class="solid">
                             <div class="section job-description">
 
@@ -86,13 +87,9 @@
                                                 height="50px;" width="50" alt="Generic placeholder image">
                                         </div>
                                         <div class="col-md-10 text-md-left text-center">
-                                            <p class="lead"><i class="fa fa-user" aria-hidden="true"></i> <a href="#"
-                                                    target="_blank"><i>{{$vacancy->company->title.'
-                                                        '.$vacancy->company->first_name.' '.$vacancy->company->last_name
-                                                        }}</i> </a></p>
-                                            <p class="mt-0"><i class="fa fa-envelope" aria-hidden="true"></i> {{
-                                                $vacancy->company->primary_email}} &nbsp; &nbsp;<i class="fa fa-phone"
-                                                    aria-hidden="true"></i> {{ $vacancy->company->primary_phone }}</p>
+                                            <p class="lead"><i class="fa fa-user" aria-hidden="true"></i> <a href="#" target="_blank">{{$vacancy->company->title.' '.$vacancy->company->first_name.' '.$vacancy->company->last_name }}</a></p>
+                                            <p class="mt-0"><i class="fa fa-envelope" aria-hidden="true"></i> {{  $vacancy->company->primary_email}} &nbsp; &nbsp;<i class="fa fa-phone"  aria-hidden="true"></i> {{ $vacancy->company->primary_phone }}</p>
+                                            <p class="mt-0"><i class="fa fa-map-marker fa-1x" aria-hidden="true"></i> {{  $vacancy->company->primary_address}} &nbsp; &nbsp;<i class="fa fa-phone"  aria-hidden="true"></i> {{ $vacancy->company->primary_phone }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -105,9 +102,13 @@
                             <div class="section job-short-info">
                                 <div class="social-media">
                                     @if(Auth::check())
+                                      @if($userBookmark)
                                          @if($userBookmark->status =="Y")
                                             <a id="bookmarkID" href="#" data-toggle="modal" data-href="{{$userBookmark->id}}" data-target="#model_unsave" class="btn btn-primary bookmark"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Saved</a>
                                          @elseif($userBookmark->status =="N")
+                                            <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Save</a>
+                                         @endif
+                                       @else
                                             <a href="#" data-toggle="modal" data-target="#modal_save" class="btn btn-primary"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Save</a>
                                          @endif
                                          @if($isApplied)
@@ -115,6 +116,7 @@
                                          @else 
                                             <a href="#" data-toggle="modal" data-target="#applyJobModal" class="btn btn-primary"><i class="fa fa-briefcase" aria-hidden="true"></i> Apply Now</a>
                                          @endif
+                                   
                                     @else
                                         <div class="button">
                                             <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa fa-briefcase" aria-hidden="true"></i> Apply Now</a>
@@ -124,30 +126,22 @@
                     
                                 </div>
                             </div>
-                            <div class="section job-short-info">
-                                <h1>Short Info</h1>
+                            <div class="section company-info">
+                                <h1><strong>Short Info</strong></h1>
                                 <ul>
-                                    <li><span class="icon"><i class="fa fa-bolt" aria-hidden="true"></i></span>Posted:
-                                        {{ $vacancy->created_at->diffForHumans() }}</li>
-                                    <li><span class="icon"><i class="fa fa-user-plus" aria-hidden="true"></i></span> Job
-                                        poster: <a href="#"></a></li>
-                                    <li><span class="icon"><i class="fa fa-industry"
-                                                aria-hidden="true"></i></span>Industry: <a href="#">Marketing and
-                                            Advertising</a></li>
-                                    <li><span class="icon"><i class="fa fa-line-chart"
-                                                aria-hidden="true"></i></span>Experience: <a href="#">{{
-                                            $vacancy->exp_level }}</a></li>
-                                    <li><span class="icon"><i class="fa fa-key" aria-hidden="true"></i></span>Job
-                                        function: {{ $vacancy->category->name }}</li>
+                                    <li>Posted :<a href="#"><strong>{{ $vacancy->created_at->diffForHumans() }}</strong></a></li>
+                                    <li>Job poster: Administration </li>
+                                    <li>Industry: Marketing and Advertising</li>
+                                    <li>Job Level :{{ $vacancy->exp_level }}</li>
                                 </ul>
+
                             </div>
                             <div class="section company-info">
-                                <h1>Company Info</h1>
+                                <h1><strong>Company Info</strong></h1>
                                 <ul>
                                     <li>Compnay Name: <a href="#"><strong>{{ $vacancy->company->company_name
                                                 }}</strong></a></li>
                                     <li>Address:<strong>{{ $vacancy->province->name }}</strong> </li>
-                                    <li>Compnay SIze: 2k Employee</li>
                                     <li>Industry: <a href="#"><strong>{{ $vacancy->category->name }}</strong></a></li>
                                     <li>Phone: {{ $vacancy->company->primary_phone }}</li>
                                     <li>Email: <a href="{{ $vacancy->company->primary_email }}">{{

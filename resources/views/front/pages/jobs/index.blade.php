@@ -74,6 +74,11 @@
                     <div class="col-md-4">
                         <div class="card mb-4">
                                 <div class="card-body">
+                                    <div class="d-flex"> 
+                                        <img src="{{ asset('images/'.$jobs->company->company_logo) }}"
+                                            class=" avatar-md-1" alt="avatar-img">
+                                    </div>
+                                    <hr/>
                                     <div class="item-card7-desc">
                                         <div class="item-card7-text"> <a href="{{ url('vacancy/'.$jobs->id) }}" class="text-dark">
                                                 <h6 class="font-weight-semibold"><strong>{{ $jobs->title }}</strong></h6>

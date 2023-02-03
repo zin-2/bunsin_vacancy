@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('css/all.min.css')}}" media="all">
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.bootstrap4.min.css')}}">
@@ -57,6 +59,8 @@
     <script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('css/responsive.bootstrap4.min.css')}}"></script>
+    <script src="https://adminlte.io/themes/v3/plugins/select2/js/select2.full.min.js"></script>    
+
     <script src="{{asset('js/dataTables.buttons.min.js')}}"></script>
     <script src="{{asset('js/buttons.bootstrap4.min.js')}}"></script>
     <script src="http://tutorialsplane.com/wp-content/uploads/2015/10/bootstrap-datepicker.js"></script>
@@ -121,6 +125,18 @@
             , ]
 
         });
+        $('#bio').summernote({
+            placeholder: 'Application Information'
+            , tabsize: 2
+            , height: 200
+            , toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']]
+                , ['para', ['ul', 'ol', 'paragraph']]
+            , ]
+
+        });
+        
 
     </script>
 
